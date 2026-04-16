@@ -749,6 +749,11 @@ ul {
   opacity: 0.8;
 }
 
+.pswp--touch .pswp__button--arrow {
+  visibility: visible !important;
+  opacity: 0.85;
+}
+
 /* ============================================================
    SCROLL PROGRESS BAR
    ============================================================ */
