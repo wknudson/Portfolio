@@ -732,8 +732,8 @@ ul {
    ============================================================ */
 .pswp {
   --pswp-bg: rgba(0, 0, 0, 0.92);
-  --pswp-icon-color: #fff;
-  --pswp-icon-color-secondary: rgba(255, 255, 255, 0.6);
+  --pswp-icon-color: var(--accent);
+  --pswp-icon-color-secondary: rgba(0, 0, 0, 0.3);
   --pswp-icon-stroke-width: 2px;
   --pswp-error-text-color: var(--text-muted);
 }
