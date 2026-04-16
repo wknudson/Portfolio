@@ -18,7 +18,12 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
+          # Using powershell -Command ensures the directory change and git reset are forced
           script: |
-            cd C:\caddy\site
-            git fetch --all
-            git reset --hard origin/main
+            powershell -Command "Set-Location C:\caddy\site; git fetch --all; git reset --hard origin/main; git log -1"
+
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CF_ZONE_ID }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_API_TOKEN }}
