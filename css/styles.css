@@ -753,9 +753,10 @@ ul {
   opacity: 0.8;
 }
 
-.pswp--touch .pswp__button--arrow {
+.pswp--touch .pswp__button--arrow,
+.pswp__button--arrow {
   visibility: visible !important;
-  opacity: 0.85;
+  opacity: 1 !important;
 }
 
 /* ============================================================
