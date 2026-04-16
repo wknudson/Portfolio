@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will Knudson | Information Systems Developer</title>
+  <meta name="description" content="Will Knudson — IS developer, full-stack builder, and BYU student. Projects, skills, and experience.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Will Knudson | Information Systems Developer">
+  <meta property="og:description" content="Full-stack developer and BYU IS student. View my projects, skills, and experience.">
+  <meta property="og:image" content="assets/professionalphoto.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Will Knudson | Information Systems Developer">
+  <meta name="twitter:description" content="Full-stack developer and BYU IS student. View my projects, skills, and experience.">
+  <meta name="twitter:image" content="assets/professionalphoto.jpg">
+
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#" class="nav__logo">WK</a>
+      <nav class="nav__menu" role="navigation">
+        <ul class="nav__list">
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#projects" class="nav__link">Projects</a></li>
+          <li><a href="#skills" class="nav__link">Skills</a></li>
+          <li><a href="#experience" class="nav__link">Experience</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+          <li><a href="assets/Will_Knudson_Resume.pdf" class="nav__link nav__resume-link" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <p class="hero__greeting">Hi, my name is</p>
+        <h1 class="hero__name">Will Knudson</h1>
+        <h2 class="hero__tagline">Information Systems Developer</h2>
+        <p class="hero__summary">
+          Full-stack developer and BYU Information Systems student.
+          I turn business needs into scalable technical solutions with clean
+          architecture and a focus on impact.
+        </p>
+        <div class="hero__ctas">
+          <a href="#projects" class="btn btn--primary">View My Work</a>
+          <a href="assets/Will_Knudson_Resume.pdf" class="btn btn--outline" target="_blank" rel="noopener">Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <h2 class="section__title fade-in">About Me</h2>
+        <div class="about__grid fade-in">
+          <div class="about__text">
+            <p>
+              I'm an Information Systems student at BYU's Marriott School of Business
+              (graduating Apr 2027) with a minor in Computer Science and a 3.93 GPA.
+              I have hands-on experience in full-stack development, database systems,
+              and machine learning&mdash;and I'm passionate about translating business
+              needs into scalable technical outcomes.
+            </p>
+            <p>
+              I'm a certified Scrum practitioner (PSM I), proficient in Spanish,
+              and recognized for analytical thinking and clean system architecture.
+              When I'm not building software, you'll find me exploring the outdoors
+              or tinkering with side projects.
+            </p>
+          </div>
+          <div class="about__image-wrapper">
+            <img
+              src="assets/professionalphoto.jpg"
+              alt="Photo of Will Knudson"
+              class="about__image"
+              width="260"
+              height="260"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <h2 class="section__title fade-in">Projects</h2>
+        <div class="projects__grid">
+
+          <article class="card fade-in" data-gallery="havyn">
+            <div class="card__image-wrap">
+              <img src="Havyn/HavynDashboard.png" alt="Havyn dashboard screenshot" class="card__image" loading="lazy">
+              <span class="card__image-count">5 screenshots</span>
+            </div>
+            <div class="card__badge">1st Place</div>
+            <h3 class="card__title">Nonprofit Management System</h3>
+            <p class="card__desc">
+              Full-stack platform with role-based security and ML-driven insights
+              to track resident care and optimize donor impact for a nonprofit organization.
+            </p>
+            <div class="card__tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">Azure Postgres</span>
+            </div>
+            <div class="card__links">
+              <a href="https://github.com/wknudson" class="card__link" target="_blank" rel="noopener">Source Code</a>
+              <button class="card__link card__gallery-btn" type="button">Screenshots</button>
+            </div>
+            <div class="card__gallery" hidden>
+              <img src="Havyn/HavynDashboard.png" alt="Havyn dashboard">
+              <img src="Havyn/HavynLanding.png" alt="Havyn landing page">
+              <img src="Havyn/HavynAnalytics.png" alt="Havyn analytics">
+              <img src="Havyn/HavynReports.png" alt="Havyn reports">
+              <img src="Havyn/HavynMFA.png" alt="Havyn multi-factor authentication">
+            </div>
+          </article>
+
+          <article class="card fade-in" data-gallery="lyrning">
+            <div class="card__image-wrap">
+              <img src="LyrningLMS/LyrningAssignmentPage.png" alt="LyrningLMS assignment page screenshot" class="card__image" loading="lazy">
+              <span class="card__image-count">5 screenshots</span>
+            </div>
+            <div class="card__badge">1st Place</div>
+            <h3 class="card__title">LyrningLMS</h3>
+            <p class="card__desc">
+              Award-winning LMS built during the BYU Systems Development Challenge.
+              Features a custom AI Dependency Score for transparent oversight of
+              student-agent interactions and academic integrity.
+            </p>
+            <div class="card__tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Postgres</span>
+              <span class="tag">Groq</span>
+            </div>
+            <div class="card__links">
+              <a href="https://github.com/wknudson" class="card__link" target="_blank" rel="noopener">Source Code</a>
+              <button class="card__link card__gallery-btn" type="button">Screenshots</button>
+            </div>
+            <div class="card__gallery" hidden>
+              <img src="LyrningLMS/LyrningAssignmentPage.png" alt="LyrningLMS assignment page">
+              <img src="LyrningLMS/LyrningStudentView.png" alt="LyrningLMS student view">
+              <img src="LyrningLMS/LyrningAssignments.png" alt="LyrningLMS assignments list">
+              <img src="LyrningLMS/LyrningAssignmentCreation.png" alt="LyrningLMS assignment creation">
+              <img src="LyrningLMS/LyrningAssignmentLink.png" alt="LyrningLMS assignment link">
+            </div>
+          </article>
+
+          <article class="card fade-in">
+            <h3 class="card__title">Nonprofit Web App</h3>
+            <p class="card__desc">
+              Full-stack web application for a nonprofit deployed on AWS,
+              featuring analytics dashboards for data-driven decision making.
+            </p>
+            <div class="card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL</span>
+              <span class="tag">AWS (EC2, RDS)</span>
+            </div>
+            <div class="card__links">
+              <a href="https://github.com/wknudson" class="card__link" target="_blank" rel="noopener">Source Code</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section skills" id="skills">
+      <div class="container">
+        <h2 class="section__title fade-in">Skills &amp; Tech Stack</h2>
+        <div class="skills__groups fade-in">
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Languages</h3>
+            <ul class="skills__list">
+              <li class="skill-badge">Python</li>
+              <li class="skill-badge">JavaScript</li>
+              <li class="skill-badge">TypeScript</li>
+              <li class="skill-badge">HTML / CSS</li>
+              <li class="skill-badge">SQL</li>
+              <li class="skill-badge">VBA</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Frameworks &amp; Libraries</h3>
+            <ul class="skills__list">
+              <li class="skill-badge">React</li>
+              <li class="skill-badge">Node.js</li>
+              <li class="skill-badge">ASP.NET Core</li>
+              <li class="skill-badge">Scikit-learn</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Data &amp; BI</h3>
+            <ul class="skills__list">
+              <li class="skill-badge">Tableau</li>
+              <li class="skill-badge">Power BI</li>
+              <li class="skill-badge">Excel</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Cloud, DevOps &amp; Security</h3>
+            <ul class="skills__list">
+              <li class="skill-badge">AWS (EC2, S3)</li>
+              <li class="skill-badge">Azure</li>
+              <li class="skill-badge">Git / GitHub</li>
+              <li class="skill-badge">Linux</li>
+              <li class="skill-badge">IAM / RBAC</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">AI &amp; Machine Learning</h3>
+            <ul class="skills__list">
+              <li class="skill-badge">Supervised Learning</li>
+              <li class="skill-badge">Predictive Modeling</li>
+              <li class="skill-badge">Feature Engineering</li>
+            </ul>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Other</h3>
+            <ul class="skills__list">
+              <li class="skill-badge">Scrum (PSM I)</li>
+              <li class="skill-badge">Spanish (proficient)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section class="section education" id="education">
+      <div class="container">
+        <h2 class="section__title fade-in">Education</h2>
+        <div class="education__card fade-in">
+          <h3 class="education__school">Brigham Young University &mdash; Marriott School of Business</h3>
+          <p class="education__degree">B.S. in Information Systems, Minor in Computer Science</p>
+          <p class="education__meta">Provo, UT &bull; Expected Apr 2027</p>
+          <ul class="education__highlights">
+            <li>GPA: 3.93 / 4.00</li>
+            <li>Dean's List: Fall 2024, Winter 2025</li>
+            <li>1st Place, TES Innovation Contest &mdash; BYU College of Engineering</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section experience" id="experience">
+      <div class="container">
+        <h2 class="section__title fade-in">Experience</h2>
+        <div class="timeline fade-in">
+
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <h3 class="timeline__role">Customer Service Representative</h3>
+              <p class="timeline__company">BYU Continuing Education Registration Center, Provo UT &mdash; <time>Sep 2021 &ndash; Apr 2022, Sep 2024 &ndash; Present</time></p>
+              <ul class="timeline__details">
+                <li>Resolved 350+ daily inquiries using ticketing software and technical troubleshooting tools, boosting satisfaction scores and reducing wait times.</li>
+                <li>Automated reporting workflows using Excel formulas, pivot tables, and VBA, reducing manual processing time and improving data accuracy.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <h3 class="timeline__role">Delivery Driver</h3>
+              <p class="timeline__company">Amazon, Gainesville VA &mdash; <time>May 2024 &ndash; Aug 2024</time></p>
+              <ul class="timeline__details">
+                <li>Delivered 120+ packages daily across assigned region with 99% satisfaction and zero delivery errors.</li>
+                <li>Trained and coached new drivers on routing apps and best practices, accelerating team performance.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <h3 class="timeline__role">Full-Time Missionary</h3>
+              <p class="timeline__company">Church of Jesus Christ of Latter-Day Saints, Ecuador Guayaquil West Mission &mdash; <time>May 2022 &ndash; May 2024</time></p>
+              <ul class="timeline__details">
+                <li>Led districts and zones of 6&ndash;32 missionaries, designing weekly training systems and using digital planning tools to track progress.</li>
+                <li>Trained 20+ missionaries in Spanish language, teaching skills, and outreach, increasing engagement success.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2 class="section__title fade-in">Get In Touch</h2>
+        <p class="contact__intro fade-in">
+          Have a question or want to work together? Drop me a message below or
+          reach out on social media.
+        </p>
+
+        <form class="contact__form fade-in" action="https://formspree.io/f/mlgagakd" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Send Message</button>
+          <p class="form-status" id="form-status" role="alert" hidden></p>
+        </form>
+
+        <div class="contact__socials fade-in">
+          <a href="https://github.com/wknudson" class="contact__social-link" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.78 0 12.292c0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.333-1.723-1.333-1.723-1.089-.73.083-.716.083-.716 1.205.083 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.98.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.228-3.164-.123-.298-.532-1.497.117-3.12 0 0 1.001-.314 3.28 1.209A11.5 11.5 0 0 1 12 6.844c1.02.005 2.047.136 3.006.397 2.277-1.523 3.276-1.209 3.276-1.209.65 1.623.241 2.822.118 3.12.765.825 1.226 1.877 1.226 3.164 0 4.53-2.805 5.528-5.475 5.818.43.364.823 1.084.823 2.185 0 1.577-.014 2.849-.014 3.236 0 .315.216.683.825.567C20.565 21.917 24 17.5 24 12.292 24 5.78 18.627.5 12 .5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/will-knudson" class="contact__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.838 20.452H3.834V9h3.004v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:will.knudson02@gmail.com" class="contact__social-link" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Close gallery">&times;</button>
+    <button class="lightbox__prev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox__next" aria-label="Next image">&#8250;</button>
+    <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    <p class="lightbox__counter" id="lightbox-counter"></p>
+  </div>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Will Knudson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
