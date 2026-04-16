@@ -1,7 +1,7 @@
 name: Deploy Portfolio
 on:
   push:
-    branches: [ main ] # This triggers the script every time you push to 'main'
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -10,17 +10,14 @@ jobs:
       - name: Connect to Tailscale
         uses: tailscale/github-action@v2
         with:
-          # This pulls from your GitHub Secrets
-          authkey: ${{ secrets.TS_AUTHKEY }} 
+          authkey: ${{ secrets.TS_AUTHKEY }}
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
-          # These also pull from your GitHub Secrets
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          # The commands below run ON your Windows PC after GitHub logs in
           script: |
             cd C:\caddy\site
             git fetch --all
