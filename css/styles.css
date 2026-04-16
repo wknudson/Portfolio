@@ -757,6 +757,8 @@ ul {
 .pswp__button--arrow {
   visibility: visible !important;
   opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 /* ============================================================
