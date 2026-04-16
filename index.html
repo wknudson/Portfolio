@@ -421,6 +421,24 @@
           },
         });
       });
+      pswp.on('openingAnimationEnd', () => {
+        pswp.element.querySelectorAll('.pswp__button--arrow').forEach((btn) => {
+          btn.style.visibility = 'visible';
+          btn.style.opacity = '1';
+        });
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+        pswp.element.querySelectorAll('.pswp__icn').forEach((icn) => {
+          icn.style.fill = accent;
+          icn.style.color = accent;
+        });
+        pswp.element.querySelectorAll('.pswp__icn path, .pswp__icn polyline, .pswp__icn line').forEach((el) => {
+          el.setAttribute('stroke', accent);
+          el.setAttribute('fill', accent);
+        });
+        pswp.element.querySelectorAll('.pswp__icn-shadow').forEach((s) => {
+          s.style.display = 'none';
+        });
+      });
       pswp.on('tapAction', () => {
         pswp.element.classList.add('pswp--ui-visible');
       });
