@@ -739,8 +739,15 @@ ul {
 }
 
 .pswp__button--arrow .pswp__icn {
-  color: var(--accent);
-  fill: var(--accent);
+  color: var(--accent) !important;
+  fill: var(--accent) !important;
+}
+
+.pswp__button--arrow .pswp__icn path,
+.pswp__button--arrow .pswp__icn polyline,
+.pswp__button--arrow .pswp__icn line {
+  stroke: var(--accent) !important;
+  fill: var(--accent) !important;
 }
 
 .pswp__button--arrow .pswp__icn-shadow {
