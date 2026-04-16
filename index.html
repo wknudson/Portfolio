@@ -388,32 +388,38 @@
   <script src="js/main.js"></script>
   <script type="module">
     import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
+    import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js';
 
-    const galleries = { havyn: null, lyrning: null };
+    const galleryData = {};
 
-    for (const id of Object.keys(galleries)) {
-      const gallery = document.getElementById(`gallery-${id}`);
-      if (!gallery) continue;
+    document.querySelectorAll('.pswp-gallery').forEach((gallery) => {
+      const id = gallery.id.replace('gallery-', '');
+      const items = Array.from(gallery.querySelectorAll('a')).map((a) => ({
+        src: a.href,
+        width: parseInt(a.dataset.pswpWidth, 10),
+        height: parseInt(a.dataset.pswpHeight, 10),
+        alt: a.querySelector('img')?.alt || '',
+      }));
+      galleryData[id] = items;
+    });
 
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: `#gallery-${id}`,
-        children: 'a',
-        pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js'),
+    function openGallery(id, index) {
+      const items = galleryData[id];
+      if (!items || !items.length) return;
+
+      const pswp = new PhotoSwipe({
+        dataSource: items,
+        index: index || 0,
         bgOpacity: 0.92,
         padding: { top: 20, bottom: 20, left: 20, right: 20 },
       });
-      lightbox.init();
-      galleries[id] = lightbox;
+      pswp.init();
     }
 
     document.querySelectorAll('.card__gallery-trigger').forEach((trigger) => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        const id = trigger.dataset.gallery;
-        const gallery = galleries[id];
-        if (!gallery) return;
-        const firstLink = document.querySelector(`#gallery-${id} a`);
-        if (firstLink) firstLink.click();
+        openGallery(trigger.dataset.gallery, 0);
       });
     });
   </script>
