@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -116,8 +117,8 @@
         <h2 class="section__title fade-in">Projects</h2>
         <div class="projects__grid">
 
-          <article class="card fade-in" data-gallery="havyn">
-            <div class="card__image-wrap">
+          <article class="card fade-in">
+            <div class="card__image-wrap card__gallery-trigger" data-gallery="havyn">
               <img src="Havyn/HavynDashboard.png" alt="Havyn dashboard screenshot" class="card__image" loading="lazy">
               <span class="card__image-count">5 screenshots</span>
             </div>
@@ -135,19 +136,19 @@
             </div>
             <div class="card__links">
               <a href="https://github.com/wknudson" class="card__link" target="_blank" rel="noopener">Source Code</a>
-              <button class="card__link card__gallery-btn" type="button">Screenshots</button>
+              <button class="card__link card__gallery-btn card__gallery-trigger" data-gallery="havyn" type="button">Screenshots</button>
             </div>
-            <div class="card__gallery" hidden>
-              <img src="Havyn/HavynDashboard.png" alt="Havyn dashboard">
-              <img src="Havyn/HavynLanding.png" alt="Havyn landing page">
-              <img src="Havyn/HavynAnalytics.png" alt="Havyn analytics">
-              <img src="Havyn/HavynReports.png" alt="Havyn reports">
-              <img src="Havyn/HavynMFA.png" alt="Havyn multi-factor authentication">
+            <div class="pswp-gallery" id="gallery-havyn" hidden>
+              <a href="Havyn/HavynDashboard.png" data-pswp-width="1550" data-pswp-height="1096" target="_blank"><img src="Havyn/HavynDashboard.png" alt="Havyn dashboard"></a>
+              <a href="Havyn/HavynLanding.png" data-pswp-width="1029" data-pswp-height="573" target="_blank"><img src="Havyn/HavynLanding.png" alt="Havyn landing page"></a>
+              <a href="Havyn/HavynAnalytics.png" data-pswp-width="1600" data-pswp-height="1183" target="_blank"><img src="Havyn/HavynAnalytics.png" alt="Havyn analytics"></a>
+              <a href="Havyn/HavynReports.png" data-pswp-width="1550" data-pswp-height="1098" target="_blank"><img src="Havyn/HavynReports.png" alt="Havyn reports"></a>
+              <a href="Havyn/HavynMFA.png" data-pswp-width="1564" data-pswp-height="1106" target="_blank"><img src="Havyn/HavynMFA.png" alt="Havyn multi-factor authentication"></a>
             </div>
           </article>
 
-          <article class="card fade-in" data-gallery="lyrning">
-            <div class="card__image-wrap">
+          <article class="card fade-in">
+            <div class="card__image-wrap card__gallery-trigger" data-gallery="lyrning">
               <img src="LyrningLMS/LyrningAssignmentPage.png" alt="LyrningLMS assignment page screenshot" class="card__image" loading="lazy">
               <span class="card__image-count">5 screenshots</span>
             </div>
@@ -166,14 +167,14 @@
             </div>
             <div class="card__links">
               <a href="https://github.com/wknudson" class="card__link" target="_blank" rel="noopener">Source Code</a>
-              <button class="card__link card__gallery-btn" type="button">Screenshots</button>
+              <button class="card__link card__gallery-btn card__gallery-trigger" data-gallery="lyrning" type="button">Screenshots</button>
             </div>
-            <div class="card__gallery" hidden>
-              <img src="LyrningLMS/LyrningAssignmentPage.png" alt="LyrningLMS assignment page">
-              <img src="LyrningLMS/LyrningStudentView.png" alt="LyrningLMS student view">
-              <img src="LyrningLMS/LyrningAssignments.png" alt="LyrningLMS assignments list">
-              <img src="LyrningLMS/LyrningAssignmentCreation.png" alt="LyrningLMS assignment creation">
-              <img src="LyrningLMS/LyrningAssignmentLink.png" alt="LyrningLMS assignment link">
+            <div class="pswp-gallery" id="gallery-lyrning" hidden>
+              <a href="LyrningLMS/LyrningAssignmentPage.png" data-pswp-width="1456" data-pswp-height="1085" target="_blank"><img src="LyrningLMS/LyrningAssignmentPage.png" alt="LyrningLMS assignment page"></a>
+              <a href="LyrningLMS/LyrningStudentView.png" data-pswp-width="1430" data-pswp-height="1085" target="_blank"><img src="LyrningLMS/LyrningStudentView.png" alt="LyrningLMS student view"></a>
+              <a href="LyrningLMS/LyrningAssignments.png" data-pswp-width="1413" data-pswp-height="1048" target="_blank"><img src="LyrningLMS/LyrningAssignments.png" alt="LyrningLMS assignments list"></a>
+              <a href="LyrningLMS/LyrningAssignmentCreation.png" data-pswp-width="840" data-pswp-height="523" target="_blank"><img src="LyrningLMS/LyrningAssignmentCreation.png" alt="LyrningLMS assignment creation"></a>
+              <a href="LyrningLMS/LyrningAssignmentLink.png" data-pswp-width="1400" data-pswp-height="1062" target="_blank"><img src="LyrningLMS/LyrningAssignmentLink.png" alt="LyrningLMS assignment link"></a>
             </div>
           </article>
 
@@ -372,15 +373,6 @@
 
   </main>
 
-  <!-- ===== LIGHTBOX ===== -->
-  <div class="lightbox" id="lightbox" hidden>
-    <button class="lightbox__close" aria-label="Close gallery">&times;</button>
-    <button class="lightbox__prev" aria-label="Previous image">&#8249;</button>
-    <button class="lightbox__next" aria-label="Next image">&#8250;</button>
-    <img class="lightbox__img" id="lightbox-img" src="" alt="">
-    <p class="lightbox__counter" id="lightbox-counter"></p>
-  </div>
-
   <!-- ===== BACK TO TOP ===== -->
   <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
@@ -394,5 +386,36 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
+
+    const galleries = { havyn: null, lyrning: null };
+
+    for (const id of Object.keys(galleries)) {
+      const gallery = document.getElementById(`gallery-${id}`);
+      if (!gallery) continue;
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: `#gallery-${id}`,
+        children: 'a',
+        pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js'),
+        bgOpacity: 0.92,
+        padding: { top: 20, bottom: 20, left: 20, right: 20 },
+      });
+      lightbox.init();
+      galleries[id] = lightbox;
+    }
+
+    document.querySelectorAll('.card__gallery-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.dataset.gallery;
+        const gallery = galleries[id];
+        if (!gallery) return;
+        const firstLink = document.querySelector(`#gallery-${id} a`);
+        if (firstLink) firstLink.click();
+      });
+    });
+  </script>
 </body>
 </html>

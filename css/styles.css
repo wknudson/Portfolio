@@ -476,7 +476,7 @@ ul {
   backdrop-filter: blur(4px);
 }
 
-.card__gallery {
+.pswp-gallery[hidden] {
   display: none;
 }
 
@@ -728,82 +728,25 @@ ul {
 }
 
 /* ============================================================
-   LIGHTBOX
+   PHOTOSWIPE OVERRIDES
    ============================================================ */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: rgba(0, 0, 0, 0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(8px);
+.pswp {
+  --pswp-bg: rgba(0, 0, 0, 0.92);
+  --pswp-icon-color: #fff;
+  --pswp-icon-color-secondary: rgba(255, 255, 255, 0.6);
+  --pswp-icon-stroke-width: 2px;
+  --pswp-error-text-color: var(--text-muted);
 }
 
-.lightbox[hidden] {
-  display: none;
-}
-
-.lightbox__img {
-  max-width: 90vw;
-  max-height: 80vh;
-  border-radius: var(--radius);
-  object-fit: contain;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  -webkit-user-drag: none;
-  user-select: none;
-  touch-action: none;
-  pointer-events: none;
-}
-
-.lightbox__close,
-.lightbox__prev,
-.lightbox__next {
-  position: absolute;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  transition: color 0.2s, transform 0.2s;
-}
-
-.lightbox__close {
-  top: 20px;
-  right: 24px;
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
-.lightbox__prev,
-.lightbox__next {
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3rem;
-  padding: 8px;
-}
-
-.lightbox__prev {
-  left: 16px;
-}
-
-.lightbox__next {
-  right: 16px;
-}
-
-.lightbox__close:hover,
-.lightbox__prev:hover,
-.lightbox__next:hover {
+.pswp__button:hover,
+.pswp__button:focus-visible {
   color: var(--accent);
 }
 
-.lightbox__counter {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.7);
+.pswp__counter {
+  font-family: var(--font);
   font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 /* ============================================================
