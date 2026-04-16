@@ -738,9 +738,13 @@ ul {
   --pswp-error-text-color: var(--text-muted);
 }
 
-.pswp__button:hover,
-.pswp__button:focus-visible {
+.pswp__button--arrow .pswp__icn {
   color: var(--accent);
+  fill: var(--accent);
+}
+
+.pswp__button--arrow .pswp__icn-shadow {
+  display: none;
 }
 
 .pswp__counter {
