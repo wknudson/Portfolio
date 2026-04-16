@@ -160,19 +160,31 @@
 
     let touchStartX = 0;
     let touchStartY = 0;
+    let touchStartTime = 0;
 
     lightbox.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].clientX;
-      touchStartY = e.changedTouches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
     }, { passive: true });
+
+    lightbox.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
 
     lightbox.addEventListener('touchend', (e) => {
       const dx = e.changedTouches[0].clientX - touchStartX;
       const dy = e.changedTouches[0].clientY - touchStartY;
+      const elapsed = Date.now() - touchStartTime;
       const absDx = Math.abs(dx);
       const absDy = Math.abs(dy);
 
-      if (absDx < 40 || absDy > absDx) return;
+      if (absDx < 30 || absDy > absDx * 0.75) {
+        if (absDx < 10 && absDy < 10 && elapsed < 300) {
+          closeLightbox();
+        }
+        return;
+      }
 
       if (dx < 0) nextSlide();
       else prevSlide();
