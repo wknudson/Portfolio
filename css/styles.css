@@ -504,6 +504,35 @@ ul {
   color: var(--accent-hover);
 }
 
+/* Primary action (filled) variant for a card's main CTA */
+.card__link--primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.card__link--primary:hover {
+  background: var(--accent-hover);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+}
+
+.card__link--primary svg {
+  transition: transform 0.2s;
+}
+
+.card__link--primary:hover svg {
+  transform: translateX(2px);
+}
+
 /* ============================================================
    SKILLS
    ============================================================ */

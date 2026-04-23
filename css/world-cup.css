@@ -1,0 +1,663 @@
+/* ============================================================
+   WORLD CUP 2026 CASE STUDY PAGE
+   Scoped with .page-wc on <body>
+   Reuses tokens from styles.css: --accent, --bg, --bg-card,
+   --text, --text-muted, --heading, --border, --radius
+   ============================================================ */
+
+.page-wc main {
+  padding-top: var(--nav-height);
+}
+
+/* ===== HERO ===== */
+.wc-hero {
+  padding: 80px 0 64px;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 85% 0%,
+      rgba(251, 146, 60, 0.12),
+      transparent 60%
+    ),
+    var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="light"] .wc-hero {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 85% 0%,
+      rgba(234, 88, 12, 0.08),
+      transparent 60%
+    ),
+    var(--bg);
+}
+
+.wc-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.wc-back:hover {
+  color: var(--accent);
+}
+
+.wc-kicker {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.wc-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  color: var(--heading);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  max-width: 820px;
+}
+
+.wc-lede {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+.wc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 32px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.wc-meta__item strong {
+  color: var(--text);
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.wc-hero__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== SECTIONS ===== */
+.wc-section {
+  padding: 80px 0;
+}
+
+.wc-section--alt {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.wc-section__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 32px;
+  position: relative;
+  display: inline-block;
+}
+
+.wc-section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.wc-section__ctas {
+  margin-top: 32px;
+}
+
+.wc-prose {
+  max-width: 780px;
+  color: var(--text-muted);
+}
+
+.wc-prose p {
+  margin-bottom: 16px;
+}
+
+.wc-prose--center {
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.wc-prose code,
+.wc-detail__list code,
+.wc-table code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.88em;
+  padding: 1px 6px;
+  background: var(--tag-bg);
+  color: var(--accent);
+  border-radius: 4px;
+}
+
+/* ===== PROBLEM CALLOUTS ===== */
+.wc-callouts {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.wc-callout {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wc-callout__label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.wc-callout__value {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===== ARCHITECTURE DIAGRAM ===== */
+.wc-arch {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.wc-arch__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 200px;
+  min-width: 180px;
+  max-width: 240px;
+}
+
+.wc-arch__stage-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.wc-arch__node {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--heading);
+  text-align: center;
+  flex: 1 1 auto;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.wc-section--alt .wc-arch__node {
+  background: var(--bg);
+}
+
+.wc-arch__node:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.wc-arch__node span {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.wc-arch__node--accent {
+  border-color: var(--accent);
+  background: var(--tag-bg);
+}
+
+.wc-arch__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--accent);
+  flex: 0 0 auto;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .wc-arch {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wc-arch__col {
+    max-width: none;
+  }
+
+  .wc-arch__arrow {
+    transform: rotate(90deg);
+    padding: 4px 0;
+  }
+}
+
+/* ===== TABLES (shared methodology + leaderboard) ===== */
+.wc-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+.wc-section--alt .wc-table-wrap {
+  background: var(--bg);
+}
+
+.wc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.wc-table th,
+.wc-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.wc-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.wc-table thead th {
+  background: var(--bg);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+.wc-section--alt .wc-table thead th {
+  background: var(--bg-card);
+}
+
+.wc-table td {
+  color: var(--text);
+  vertical-align: top;
+}
+
+.wc-table td:first-child {
+  color: var(--accent);
+  font-weight: 600;
+  width: 3%;
+  white-space: nowrap;
+}
+
+.wc-table td:nth-child(2) {
+  font-weight: 600;
+  color: var(--heading);
+  white-space: nowrap;
+}
+
+/* ===== MODEL DETAILS GRID ===== */
+.wc-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.wc-detail {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.wc-detail__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 14px;
+}
+
+.wc-detail__list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.wc-detail__list li {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  margin-bottom: 8px;
+  line-height: 1.55;
+}
+
+.wc-detail__list li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ===== PREDICTIONS: KPIs ===== */
+.wc-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.wc-kpi {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: left;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.wc-section--alt .wc-kpi {
+  background: var(--bg);
+}
+
+.wc-kpi:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.wc-kpi__rank {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.wc-kpi__team {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 4px;
+}
+
+.wc-kpi__prob {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+  margin: 4px 0;
+}
+
+.wc-kpi__label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===== PREDICTIONS: CHART CARD ===== */
+.wc-chart-card,
+.wc-table-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.wc-chart-controls,
+.wc-table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.wc-chart-controls label,
+.wc-table-controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.wc-chart-controls select,
+.wc-table-controls select {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.wc-chart-controls select:hover,
+.wc-chart-controls select:focus,
+.wc-table-controls select:hover,
+.wc-table-controls select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.wc-table-hint {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.wc-chart-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+}
+
+/* Chart.js canvas sizing */
+#wc-chart {
+  width: 100% !important;
+  max-height: 620px;
+}
+
+/* ===== LEADERBOARD TABLE ===== */
+.wc-leaderboard {
+  font-size: 0.9rem;
+}
+
+.wc-leaderboard th {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.wc-leaderboard th:hover {
+  color: var(--accent);
+}
+
+.wc-leaderboard th.wc-num {
+  text-align: right;
+}
+
+.wc-leaderboard td.wc-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.wc-leaderboard td.wc-num strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.wc-leaderboard th.is-sort-asc::after,
+.wc-leaderboard th.is-sort-desc::after {
+  content: '';
+  display: inline-block;
+  margin-left: 6px;
+  border: 4px solid transparent;
+  vertical-align: middle;
+}
+
+.wc-leaderboard th.is-sort-asc::after {
+  border-bottom-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.wc-leaderboard th.is-sort-desc::after {
+  border-top-color: var(--accent);
+  transform: translateY(2px);
+}
+
+.wc-leaderboard td:first-child {
+  color: var(--text-muted);
+  width: auto;
+}
+
+.wc-leaderboard tbody tr {
+  transition: background 0.15s;
+}
+
+.wc-leaderboard tbody tr:hover {
+  background: var(--tag-bg);
+}
+
+.wc-leaderboard .wc-prob-bar {
+  display: inline-block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: 0.85;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.wc-fineprint {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ===== FIGURES GRID ===== */
+.wc-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.wc-figure {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: zoom-in;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.wc-figure:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.wc-figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #fff;
+  display: block;
+}
+
+[data-theme="dark"] .wc-figure img {
+  background: #f5f5f5;
+}
+
+.wc-figure__caption {
+  display: block;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 500;
+  border-top: 1px solid var(--border);
+}
+
+/* ===== TECH STACK ===== */
+.wc-stack {
+  max-width: 780px;
+  margin-bottom: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .wc-hero {
+    padding: 56px 0 48px;
+  }
+
+  .wc-section {
+    padding: 56px 0;
+  }
+
+  .wc-chart-controls,
+  .wc-table-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .wc-table-hint {
+    margin-left: 0;
+  }
+
+  .wc-leaderboard {
+    font-size: 0.82rem;
+  }
+
+  .wc-leaderboard th,
+  .wc-leaderboard td {
+    padding: 10px 8px;
+  }
+}

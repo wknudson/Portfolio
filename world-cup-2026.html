@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIFA 2026 Prediction Pipeline | Will Knudson</title>
+  <meta name="description" content="End-to-end CRISP-DM machine-learning pipeline that predicts 2026 FIFA World Cup match outcomes and simulates 10,000 tournaments to estimate championship probabilities.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FIFA 2026 Prediction Pipeline | Will Knudson">
+  <meta property="og:description" content="3-class match-outcome model plus 10k Monte Carlo tournament simulation for the 2026 World Cup.">
+  <meta property="og:image" content="WorldCup2026/champion_probabilities.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FIFA 2026 Prediction Pipeline | Will Knudson">
+  <meta name="twitter:description" content="3-class match-outcome model plus 10k Monte Carlo tournament simulation for the 2026 World Cup.">
+  <meta name="twitter:image" content="WorldCup2026/champion_probabilities.png">
+
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/world-cup.css">
+</head>
+<body class="page-wc">
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== NAV  ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo">WK</a>
+      <nav class="nav__menu" role="navigation">
+        <ul class="nav__list">
+          <li><a href="index.html#about" class="nav__link">About</a></li>
+          <li><a href="index.html#projects" class="nav__link">Projects</a></li>
+          <li><a href="index.html#skills" class="nav__link">Skills</a></li>
+          <li><a href="index.html#experience" class="nav__link">Experience</a></li>
+          <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+          <li><a href="assets/Will_Knudson_Resume.pdf" class="nav__link nav__resume-link" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== CASE STUDY HERO ===== -->
+    <section class="wc-hero">
+      <div class="container">
+        <a href="index.html#projects" class="wc-back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to projects
+        </a>
+        <p class="wc-kicker">Case Study &middot; Machine Learning</p>
+        <h1 class="wc-title">FIFA 2026 World Cup Prediction Pipeline</h1>
+        <p class="wc-lede">
+          A 3-class match-outcome classifier trained on nearly a century of World Cup
+          data, wrapped in a 10,000-run Monte Carlo tournament simulation to produce
+          calibrated championship probabilities for every team in the 2026 field.
+        </p>
+        <div class="wc-meta">
+          <span class="wc-meta__item"><strong>Role</strong> Sole author</span>
+          <span class="wc-meta__item"><strong>Course</strong> IS 455 &middot; BYU</span>
+          <span class="wc-meta__item"><strong>Stack</strong> Python &middot; scikit-learn &middot; pandas</span>
+        </div>
+        <div class="wc-hero__ctas">
+          <a href="#predictions" class="btn btn--primary">See the 2026 Predictions</a>
+          <a href="https://github.com/wknudson" class="btn btn--outline" target="_blank" rel="noopener">Source Code</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROBLEM ===== -->
+    <section class="wc-section">
+      <div class="container wc-prose">
+        <h2 class="wc-section__title">The Problem</h2>
+        <p>
+          Predicting a World Cup is not one prediction &mdash; it is 104 matches that
+          feed a knockout bracket, where a single draw in the group stage can flip
+          which giant goes home early. A binary "won vs. didn't win" model throws
+          away the draw information that group-stage standings depend on, so the
+          whole thing has to be framed as a <strong>3-class classification</strong>
+          over {win, draw, loss} with calibrated probabilities.
+        </p>
+        <p>
+          Those probabilities then feed a Monte Carlo simulator that samples 10,000
+          full tournaments &mdash; group stage through final &mdash; to turn
+          match-level uncertainty into stage-reach probabilities for each team.
+        </p>
+
+        <div class="wc-callouts">
+          <div class="wc-callout">
+            <span class="wc-callout__label">Unit of analysis</span>
+            <span class="wc-callout__value">One row per team per match (each match contributes 2 rows)</span>
+          </div>
+          <div class="wc-callout">
+            <span class="wc-callout__label">Primary metric</span>
+            <span class="wc-callout__value">Multiclass log loss (probability quality feeds the simulator)</span>
+          </div>
+          <div class="wc-callout">
+            <span class="wc-callout__label">Secondary metric</span>
+            <span class="wc-callout__value">Macro-F1 (protects the minority "draw" class)</span>
+          </div>
+          <div class="wc-callout">
+            <span class="wc-callout__label">Validation</span>
+            <span class="wc-callout__value">Time-based split &mdash; train 1930&ndash;2014, val 2018, test 2022, predict 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="wc-section wc-section--alt">
+      <div class="container">
+        <h2 class="wc-section__title">Architecture</h2>
+        <p class="wc-prose wc-prose--center">
+          Data flows from Kaggle and user-supplied CSVs through feature engineering
+          and a single scikit-learn <code>Pipeline</code>, and ends in a 10k-run
+          Monte Carlo simulator that writes the final predictions as CSV.
+        </p>
+
+        <div class="wc-arch" role="img" aria-label="Pipeline architecture diagram">
+          <!-- Stage 1: Sources -->
+          <div class="wc-arch__col">
+            <div class="wc-arch__stage-label">Data</div>
+            <div class="wc-arch__node">Kaggle<br><span>WorldCupMatches</span></div>
+            <div class="wc-arch__node">User CSVs<br><span>post-2014, Elo, 2026 schedule</span></div>
+          </div>
+          <div class="wc-arch__arrow" aria-hidden="true">&rarr;</div>
+
+          <!-- Stage 2: Features -->
+          <div class="wc-arch__col">
+            <div class="wc-arch__stage-label">Features</div>
+            <div class="wc-arch__node wc-arch__node--accent">Reshape to team-match rows</div>
+            <div class="wc-arch__node">Feature engineering<br><span>Elo, rolling form, WC history</span></div>
+          </div>
+          <div class="wc-arch__arrow" aria-hidden="true">&rarr;</div>
+
+          <!-- Stage 3: Model -->
+          <div class="wc-arch__col">
+            <div class="wc-arch__stage-label">Model</div>
+            <div class="wc-arch__node">ColumnTransformer<br><span>impute &middot; scale &middot; OHE</span></div>
+            <div class="wc-arch__node">Ensembles + tuning<br><span>RF / GB, TimeSeriesSplit CV</span></div>
+            <div class="wc-arch__node">Permutation importance<br><span>prune low-signal features</span></div>
+          </div>
+          <div class="wc-arch__arrow" aria-hidden="true">&rarr;</div>
+
+          <!-- Stage 4: Simulation -->
+          <div class="wc-arch__col">
+            <div class="wc-arch__stage-label">Simulation</div>
+            <div class="wc-arch__node wc-arch__node--accent">Monte Carlo<br><span>10,000 tournaments</span></div>
+            <div class="wc-arch__node">predictions_2026.csv<br><span>P(R32) &hellip; P(Champion)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHODOLOGY ===== -->
+    <section class="wc-section">
+      <div class="container">
+        <h2 class="wc-section__title">Methodology (CRISP-DM, 11 stages)</h2>
+        <p class="wc-prose wc-prose--center">
+          The notebook follows CRISP-DM end-to-end. Each stage maps to a chapter of
+          the course text and to a concrete set of cells in the notebook.
+        </p>
+
+        <div class="wc-table-wrap">
+          <table class="wc-table">
+            <thead>
+              <tr><th>#</th><th>Stage</th><th>What happens</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Problem framing</td><td>CRISP-DM framing, 3-class target, success metrics</td></tr>
+              <tr><td>2</td><td>Data acquisition</td><td>Kaggle download via <code>kagglehub</code>, user CSVs for post-2014 data</td></tr>
+              <tr><td>3</td><td>Reshape &amp; label</td><td>Two rows per match (home/away perspectives); build 3-class <code>result</code></td></tr>
+              <tr><td>4</td><td>Feature engineering</td><td>Rolling form (5/10 games), Elo, FIFA rank, WC experience, host, confederation</td></tr>
+              <tr><td>5</td><td>Automated EDA</td><td>Label distribution, missingness, boxplots, categorical win rates</td></tr>
+              <tr><td>6</td><td>Preprocessing</td><td><code>ColumnTransformer</code>: median-impute &amp; scale numerics, mode-impute &amp; one-hot encode categoricals; chronological split</td></tr>
+              <tr><td>7</td><td>Baseline models</td><td>One-vs-Rest logistic regression, decision-tree depth sweep</td></tr>
+              <tr><td>8</td><td>Ensembles</td><td>Random forest and gradient boosting inside the same pipeline</td></tr>
+              <tr><td>9</td><td>Cross-validation &amp; tuning</td><td><code>TimeSeriesSplit(5)</code> + <code>RandomizedSearchCV(n_iter=30)</code> scoring on neg-log-loss</td></tr>
+              <tr><td>10</td><td>Feature selection</td><td>Permutation importance with a 0.001 threshold; refit on the reduced feature set</td></tr>
+              <tr><td>11</td><td>2026 simulation</td><td>10,000 Monte Carlo tournaments driven by the calibrated probabilities</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PREDICTIONS (interactive) ===== -->
+    <section class="wc-section wc-section--alt" id="predictions">
+      <div class="container">
+        <h2 class="wc-section__title">2026 Predictions</h2>
+        <p class="wc-prose wc-prose--center">
+          Probabilities below are live-rendered from
+          <a href="WorldCup2026/predictions_2026.csv" target="_blank" rel="noopener"><code>predictions_2026.csv</code></a>
+          &mdash; the same artifact the notebook writes after its 10k-run Monte Carlo. Sort by any
+          round, filter by confederation, or switch how many teams the chart displays.
+        </p>
+
+        <div class="wc-kpis" id="wc-kpis" aria-label="Top contenders">
+          <!-- filled by js/world-cup.js -->
+        </div>
+
+        <div class="wc-chart-card">
+          <div class="wc-chart-controls">
+            <label for="wc-topn">
+              Show
+              <select id="wc-topn">
+                <option value="10" selected>Top 10</option>
+                <option value="20">Top 20</option>
+                <option value="48">All 48</option>
+              </select>
+              teams
+            </label>
+            <label for="wc-metric">
+              by
+              <select id="wc-metric">
+                <option value="P(Champion)" selected>P(Champion)</option>
+                <option value="P(Final)">P(Final)</option>
+                <option value="P(SF)">P(Semifinal)</option>
+                <option value="P(QF)">P(Quarterfinal)</option>
+                <option value="P(R16)">P(Round of 16)</option>
+                <option value="P(R32)">P(Round of 32)</option>
+              </select>
+            </label>
+          </div>
+          <div class="wc-chart-wrap">
+            <canvas id="wc-chart" aria-label="Probability bar chart"></canvas>
+          </div>
+        </div>
+
+        <div class="wc-table-card">
+          <div class="wc-table-controls">
+            <label for="wc-conf">
+              Confederation
+              <select id="wc-conf">
+                <option value="all" selected>All</option>
+                <option value="UEFA">UEFA</option>
+                <option value="CONMEBOL">CONMEBOL</option>
+                <option value="CONCACAF">CONCACAF</option>
+                <option value="CAF">CAF</option>
+                <option value="AFC">AFC</option>
+                <option value="OFC">OFC</option>
+              </select>
+            </label>
+            <p class="wc-table-hint">Click any column header to sort</p>
+          </div>
+          <div class="wc-table-wrap">
+            <table class="wc-table wc-leaderboard" id="wc-leaderboard">
+              <thead>
+                <tr>
+                  <th data-sort="rank" class="is-sort-desc">#</th>
+                  <th data-sort="team">Team</th>
+                  <th data-sort="group">Group</th>
+                  <th data-sort="confederation">Conf.</th>
+                  <th data-sort="P(R32)" class="wc-num">R32</th>
+                  <th data-sort="P(R16)" class="wc-num">R16</th>
+                  <th data-sort="P(QF)" class="wc-num">QF</th>
+                  <th data-sort="P(SF)" class="wc-num">SF</th>
+                  <th data-sort="P(Final)" class="wc-num">Final</th>
+                  <th data-sort="P(Champion)" class="wc-num">Champ</th>
+                </tr>
+              </thead>
+              <tbody id="wc-leaderboard-body">
+                <!-- filled by js/world-cup.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="wc-fineprint">
+          All probabilities are simulation estimates from a coursework model and
+          should be read as illustrative, not as betting advice. Stage probabilities
+          are monotonic by construction: reaching the Semifinal implies reaching the
+          Quarterfinal, and so on.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== MODEL DETAILS ===== -->
+    <section class="wc-section">
+      <div class="container">
+        <h2 class="wc-section__title">Model Details</h2>
+        <div class="wc-grid-2">
+          <div class="wc-detail">
+            <h3 class="wc-detail__title">Feature families</h3>
+            <ul class="wc-detail__list">
+              <li><strong>Elo</strong> &mdash; team, opponent, and difference</li>
+              <li><strong>Rolling form</strong> &mdash; 5- and 10-game win/draw rates, goals for/against, goal differential, plus opponent form and symmetric diffs</li>
+              <li><strong>Career World Cup</strong> &mdash; matches, wins, titles, and experience differentials</li>
+              <li><strong>FIFA rank</strong> &mdash; team, opponent, and difference (imputed when missing)</li>
+              <li><strong>Context</strong> &mdash; host flag, same-confederation flag, match year, stage, confederations</li>
+            </ul>
+          </div>
+          <div class="wc-detail">
+            <h3 class="wc-detail__title">Training &amp; tuning</h3>
+            <ul class="wc-detail__list">
+              <li><strong>Preprocessor</strong> &mdash; median impute + standard-scale numerics, mode impute + one-hot (unknown-safe) categoricals, inside one <code>ColumnTransformer</code></li>
+              <li><strong>Baselines</strong> &mdash; one-vs-rest logistic regression and a depth-swept decision tree</li>
+              <li><strong>Ensembles</strong> &mdash; random forest and gradient boosting</li>
+              <li><strong>Cross-validation</strong> &mdash; <code>TimeSeriesSplit(n_splits=5)</code> &mdash; never trains on matches that happened after the validation fold</li>
+              <li><strong>Tuning</strong> &mdash; <code>RandomizedSearchCV(n_iter=30)</code> scoring <code>neg_log_loss</code></li>
+              <li><strong>Feature pruning</strong> &mdash; permutation importance; drop anything below 0.001 and refit</li>
+            </ul>
+          </div>
+          <div class="wc-detail">
+            <h3 class="wc-detail__title">Monte Carlo simulation</h3>
+            <ul class="wc-detail__list">
+              <li>10,000 full tournaments, each sampling W/D/L for every group match from the tuned model's probability output</li>
+              <li>Group standings resolved with the real FIFA tie-breakers (points, goal difference, goals for)</li>
+              <li>48-team format with a Round of 32 into a single-elimination bracket through the final</li>
+              <li>Per-team stage-reach counts divided by 10,000 give the probabilities you see above</li>
+            </ul>
+          </div>
+          <div class="wc-detail">
+            <h3 class="wc-detail__title">Artifacts</h3>
+            <ul class="wc-detail__list">
+              <li><code>artifacts/final_pipeline.joblib</code> &mdash; serialized end-to-end pipeline (preprocessor + classifier)</li>
+              <li><code>artifacts/predictions_2026.csv</code> &mdash; per-team stage probabilities (rendered above)</li>
+              <li><code>artifacts/figures/*.png</code> &mdash; EDA, confusion matrices, permutation importance, champion chart</li>
+              <li><code>data/processed/team_match_features.csv</code> &mdash; cached engineered feature matrix for fast reruns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FIGURES ===== -->
+    <section class="wc-section wc-section--alt">
+      <div class="container">
+        <h2 class="wc-section__title">Figures</h2>
+        <p class="wc-prose wc-prose--center">
+          Selected plots exported from the notebook. Click any figure to open it in
+          the lightbox.
+        </p>
+
+        <div class="wc-figures pswp-gallery" id="gallery-wc-figures">
+          <a href="WorldCup2026/champion_probabilities.png" data-pswp-width="1350" data-pswp-height="1200" class="wc-figure">
+            <img src="WorldCup2026/champion_probabilities.png" alt="Champion probabilities by team" loading="lazy">
+            <span class="wc-figure__caption">2026 Championship probabilities (10k sims)</span>
+          </a>
+          <a href="WorldCup2026/tuned_model_confusion_matrix.png" data-pswp-width="750" data-pswp-height="675" class="wc-figure">
+            <img src="WorldCup2026/tuned_model_confusion_matrix.png" alt="Tuned model confusion matrix" loading="lazy">
+            <span class="wc-figure__caption">Tuned model confusion matrix (2022 test)</span>
+          </a>
+          <a href="WorldCup2026/permutation_feature_importance.png" data-pswp-width="1200" data-pswp-height="1512" class="wc-figure">
+            <img src="WorldCup2026/permutation_feature_importance.png" alt="Permutation feature importance" loading="lazy">
+            <span class="wc-figure__caption">Permutation feature importance</span>
+          </a>
+          <a href="WorldCup2026/baseline_confusion_matrices.png" data-pswp-width="1650" data-pswp-height="675" class="wc-figure">
+            <img src="WorldCup2026/baseline_confusion_matrices.png" alt="Baseline model confusion matrices" loading="lazy">
+            <span class="wc-figure__caption">Baseline confusion matrices (LogReg vs Tree)</span>
+          </a>
+          <a href="WorldCup2026/tree_depth_sweep.png" data-pswp-width="1800" data-pswp-height="600" class="wc-figure">
+            <img src="WorldCup2026/tree_depth_sweep.png" alt="Decision tree depth sweep" loading="lazy">
+            <span class="wc-figure__caption">Decision tree depth sweep</span>
+          </a>
+          <a href="WorldCup2026/eda_label_distribution.png" data-pswp-width="900" data-pswp-height="600" class="wc-figure">
+            <img src="WorldCup2026/eda_label_distribution.png" alt="Label distribution" loading="lazy">
+            <span class="wc-figure__caption">Class balance &mdash; W / D / L</span>
+          </a>
+          <a href="WorldCup2026/eda_missingness.png" data-pswp-width="1050" data-pswp-height="855" class="wc-figure">
+            <img src="WorldCup2026/eda_missingness.png" alt="Missingness heatmap" loading="lazy">
+            <span class="wc-figure__caption">Missingness by feature</span>
+          </a>
+          <a href="WorldCup2026/eda_boxplots_by_result.png" data-pswp-width="2085" data-pswp-height="1230" class="wc-figure">
+            <img src="WorldCup2026/eda_boxplots_by_result.png" alt="Feature boxplots by result" loading="lazy">
+            <span class="wc-figure__caption">Numeric features split by result</span>
+          </a>
+          <a href="WorldCup2026/eda_categorical_result_rates.png" data-pswp-width="1950" data-pswp-height="675" class="wc-figure">
+            <img src="WorldCup2026/eda_categorical_result_rates.png" alt="Categorical result rates" loading="lazy">
+            <span class="wc-figure__caption">Win/draw/loss rates by category</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="wc-section">
+      <div class="container">
+        <h2 class="wc-section__title">Tech Stack</h2>
+        <ul class="skills__list wc-stack">
+          <li class="skill-badge">Python</li>
+          <li class="skill-badge">pandas</li>
+          <li class="skill-badge">NumPy</li>
+          <li class="skill-badge">scikit-learn</li>
+          <li class="skill-badge">matplotlib</li>
+          <li class="skill-badge">seaborn</li>
+          <li class="skill-badge">joblib</li>
+          <li class="skill-badge">kagglehub</li>
+          <li class="skill-badge">Jupyter</li>
+          <li class="skill-badge">Monte Carlo</li>
+          <li class="skill-badge">CRISP-DM</li>
+        </ul>
+        <div class="wc-hero__ctas wc-section__ctas">
+          <a href="https://github.com/wknudson" class="btn btn--primary" target="_blank" rel="noopener">View on GitHub</a>
+          <a href="index.html#projects" class="btn btn--outline">Other projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Will Knudson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="js/world-cup.js"></script>
+  <script type="module">
+    import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js';
+
+    const galleryData = {};
+
+    document.querySelectorAll('.pswp-gallery').forEach((gallery) => {
+      const id = gallery.id.replace('gallery-', '');
+      const items = Array.from(gallery.querySelectorAll('a')).map((a) => ({
+        src: a.href,
+        width: parseInt(a.dataset.pswpWidth, 10),
+        height: parseInt(a.dataset.pswpHeight, 10),
+        alt: a.querySelector('img')?.alt || '',
+      }));
+      galleryData[id] = items;
+    });
+
+    function openGallery(id, index) {
+      const items = galleryData[id];
+      if (!items || !items.length) return;
+
+      const pswp = new PhotoSwipe({
+        dataSource: items,
+        index: index || 0,
+        bgOpacity: 0.92,
+        padding: { top: 20, bottom: 20, left: 20, right: 20 },
+        tapAction: 'close',
+      });
+      pswp.on('openingAnimationEnd', () => {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+        pswp.element.querySelectorAll('.pswp__icn').forEach((icn) => {
+          icn.style.fill = accent;
+          icn.style.color = accent;
+        });
+        pswp.element.querySelectorAll('.pswp__icn path, .pswp__icn polyline, .pswp__icn line').forEach((el) => {
+          el.setAttribute('stroke', accent);
+          el.setAttribute('fill', accent);
+        });
+      });
+      pswp.init();
+    }
+
+    // Figure-grid links open the lightbox at the clicked index
+    document.querySelectorAll('#gallery-wc-figures a').forEach((a, idx) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        openGallery('wc-figures', idx);
+      });
+    });
+  </script>
+</body>
+</html>
