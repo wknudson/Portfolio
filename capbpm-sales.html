@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internal Business Operations Platform | Will Knudson</title>
+  <meta name="description" content="An Angular 21 single-page application used by Capital BPM staff to run sales pipeline, statements of work, project delivery, time tracking, and reporting on top of a Spring Boot API.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Internal Business Operations Platform | Will Knudson">
+  <meta property="og:description" content="Angular 21 SPA that runs sales pipeline, SOWs, project delivery, time tracking, and reporting for a BPM consultancy.">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Internal Business Operations Platform | Will Knudson">
+  <meta name="twitter:description" content="Angular 21 SPA that runs sales pipeline, SOWs, project delivery, time tracking, and reporting for a BPM consultancy.">
+
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/case-study.css">
+</head>
+<body class="page-cs">
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== NAV  ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo">WK</a>
+      <nav class="nav__menu" role="navigation">
+        <ul class="nav__list">
+          <li><a href="index.html#about" class="nav__link">About</a></li>
+          <li><a href="index.html#projects" class="nav__link">Projects</a></li>
+          <li><a href="index.html#skills" class="nav__link">Skills</a></li>
+          <li><a href="index.html#experience" class="nav__link">Experience</a></li>
+          <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+          <li><a href="assets/Will_Knudson_Resume.pdf" class="nav__link nav__resume-link" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="cs-hero">
+      <div class="container">
+        <a href="index.html#projects" class="cs-back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to projects
+        </a>
+        <p class="cs-kicker">Case Study &middot; Enterprise Angular</p>
+        <h1 class="cs-title">Internal Business Operations Platform</h1>
+        <p class="cs-lede">
+          A single Angular 21 application that Capital BPM staff use to run the
+          business side of client engagements&mdash;sales pipeline, statements of
+          work, project delivery, time tracking, and reporting&mdash;all served by
+          one Spring Boot API with no direct database access from the client.
+        </p>
+        <div class="cs-meta">
+          <span class="cs-meta__item"><strong>Role</strong> Frontend developer (intern)</span>
+          <span class="cs-meta__item"><strong>Org</strong> Capital BPM</span>
+          <span class="cs-meta__item"><strong>Timeline</strong> Jun &ndash; Aug 2026</span>
+          <span class="cs-meta__item"><strong>Stack</strong> Angular 21 &middot; TypeScript &middot; Spring Boot API</span>
+        </div>
+        <div class="cs-hero__ctas">
+          <a href="#features" class="btn btn--primary">See What It Does</a>
+          <a href="index.html#projects" class="btn btn--outline">Other projects</a>
+        </div>
+        <p class="cs-note">
+          Internal tooling in a private repository&mdash;no source, screenshots, or
+          client data are shown here. Everything below describes architecture and
+          engineering approach only.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== THE PROBLEM ===== -->
+    <section class="cs-section">
+      <div class="container cs-prose">
+        <h2 class="cs-section__title">The Problem</h2>
+        <p>
+          A consultancy lives and dies by the handoff between selling work and
+          delivering it. At Capital BPM that handoff crossed several systems that
+          didn't talk to each other: opportunities lived in Salesforce, hours and
+          project financials lived in a PSA tool, and the connective
+          tissue&mdash;statements of work, delivery status, utilization, margin
+          &mdash;lived in spreadsheets and inboxes.
+        </p>
+        <p>
+          The answer was one internal single-page application that spans the whole
+          arc. Sales moves an opportunity through the pipeline, the SOW is built
+          from it, the project is created and staffed, hours land against it,
+          and delivery, utilization, and profitability all report off the same
+          data. Everything the client renders comes from a single Spring Boot
+          API&mdash;there is no direct database access from the browser&mdash;and
+          much of that data originates in a Salesforce cache the API maintains.
+        </p>
+
+        <div class="cs-callouts">
+          <div class="cs-callout">
+            <span class="cs-callout__label">Users</span>
+            <span class="cs-callout__value">Internal staff across sales, delivery, and finance</span>
+          </div>
+          <div class="cs-callout">
+            <span class="cs-callout__label">Consolidates</span>
+            <span class="cs-callout__value">Pipeline, SOWs, projects, and time data previously split across Salesforce, a PSA tool, and spreadsheets</span>
+          </div>
+          <div class="cs-callout">
+            <span class="cs-callout__label">Hard constraint</span>
+            <span class="cs-callout__value">No client-side database access&mdash;every read and write goes through the API</span>
+          </div>
+          <div class="cs-callout">
+            <span class="cs-callout__label">Outcome</span>
+            <span class="cs-callout__value">One SPA covering sales through delivery through reporting</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="cs-section cs-section--alt">
+      <div class="container">
+        <h2 class="cs-section__title">Architecture</h2>
+        <p class="cs-prose cs-prose--center">
+          A domain-restricted sign-in fronts an Angular SPA that holds no data of
+          its own. Every view resolves through the Spring Boot API, which in turn
+          reads from a maintained Salesforce cache and the PSA system rather than
+          hitting those vendors on each request.
+        </p>
+
+        <div class="cs-arch" role="img" aria-label="Platform architecture diagram">
+          <!-- Stage 1: Access -->
+          <div class="cs-arch__col">
+            <div class="cs-arch__stage-label">Access</div>
+            <div class="cs-arch__node">Google OAuth<br><span>restricted to company accounts</span></div>
+            <div class="cs-arch__node">Admin route guard<br><span>gates the admin area</span></div>
+            <div class="cs-arch__node">Mock user<br><span>localhost only, skips auth</span></div>
+          </div>
+          <div class="cs-arch__arrow" aria-hidden="true">&rarr;</div>
+
+          <!-- Stage 2: Client -->
+          <div class="cs-arch__col">
+            <div class="cs-arch__stage-label">Client</div>
+            <div class="cs-arch__node cs-arch__node--accent">Angular 21 SPA<br><span>standalone components, signals</span></div>
+            <div class="cs-arch__node">Shared data table<br><span>one component, every grid</span></div>
+            <div class="cs-arch__node">Cached typeahead services<br><span>preloaded lookup data</span></div>
+          </div>
+          <div class="cs-arch__arrow" aria-hidden="true">&rarr;</div>
+
+          <!-- Stage 3: API -->
+          <div class="cs-arch__col">
+            <div class="cs-arch__stage-label">API</div>
+            <div class="cs-arch__node">Spring Boot REST<br><span>sole data path for the client</span></div>
+            <div class="cs-arch__node">Scheduled jobs<br><span>cache refresh, escalation email</span></div>
+          </div>
+          <div class="cs-arch__arrow" aria-hidden="true">&rarr;</div>
+
+          <!-- Stage 4: Data -->
+          <div class="cs-arch__col">
+            <div class="cs-arch__stage-label">Data</div>
+            <div class="cs-arch__node">Salesforce cache<br><span>accounts, opportunities</span></div>
+            <div class="cs-arch__node">PSA system<br><span>projects and hours</span></div>
+            <div class="cs-arch__node">App constants<br><span>admin-managed lookups</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BY THE NUMBERS ===== -->
+    <section class="cs-section">
+      <div class="container">
+        <h2 class="cs-section__title">By the Numbers</h2>
+        <div class="cs-stats">
+          <div class="cs-stat">
+            <div class="cs-stat__value">55</div>
+            <div class="cs-stat__label">Components</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__value">30</div>
+            <div class="cs-stat__label">Services</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__value">21</div>
+            <div class="cs-stat__label">Top-level routes</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__value">14</div>
+            <div class="cs-stat__label">Functional areas</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__value">1</div>
+            <div class="cs-stat__label">Shared table component</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT IT DOES ===== -->
+    <section class="cs-section cs-section--alt" id="features">
+      <div class="container">
+        <h2 class="cs-section__title">What It Does</h2>
+        <p class="cs-prose">
+          The app is organized around the life of an engagement. Each area below is
+          a distinct module in the routing tree, but they share the same data
+          table, the same lookup services, and the same API client.
+        </p>
+
+        <div class="cs-grid-2">
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Sales pipeline</h3>
+            <ul class="cs-detail__list">
+              <li><strong>Pipeline Pulse</strong> &mdash; a rollup of deals in flight and where they sit in the process</li>
+              <li><strong>Opportunity activity</strong> &mdash; movement and touchpoints on individual deals</li>
+              <li><strong>Opportunity creation</strong> &mdash; new deals entered against cached Salesforce accounts</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Statements of Work</h3>
+            <ul class="cs-detail__list">
+              <li><strong>SOW builder</strong> &mdash; compose and edit a statement of work off a won opportunity</li>
+              <li><strong>SOW library</strong> &mdash; browse and reuse language from past engagements</li>
+              <li>Export to PDF so the document leaves the app in a client-ready form</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Projects</h3>
+            <ul class="cs-detail__list">
+              <li>Full CRUD module &mdash; list, create, edit, and a detail view per project</li>
+              <li><strong>PSA import</strong> &mdash; pull existing projects in rather than re-keying them</li>
+              <li><strong>Project Visibility</strong> &mdash; portfolio-wide status and budget performance (see below)</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Delivery &amp; resourcing</h3>
+            <ul class="cs-detail__list">
+              <li><strong>Delivery dashboard</strong> &mdash; what's in flight and how it's tracking</li>
+              <li><strong>Utilization report</strong> &mdash; billable share of staff time across the portfolio</li>
+              <li><strong>Resource profiles</strong> and a <strong>profitability model</strong> for margin trends</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Time tracking</h3>
+            <ul class="cs-detail__list">
+              <li><strong>My Hours</strong> &mdash; individual time entry against projects</li>
+              <li><strong>Hours report</strong> pulled from the PSA system</li>
+              <li><strong>Compliance tracking</strong> with scheduled escalation email for unlogged time</li>
+              <li>Time-tracking KPIs surfaced alongside delivery reporting</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Reporting &amp; tasks</h3>
+            <ul class="cs-detail__list">
+              <li><strong>Project status reports</strong> feeding the visibility notes described below</li>
+              <li><strong>Task tracker</strong> for general internal follow-ups</li>
+              <li><strong>Client QA</strong> checklists for pre-delivery review</li>
+              <li><strong>Email templates</strong> managed in-app and sent through the API</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Admin tooling</h3>
+            <ul class="cs-detail__list">
+              <li>App-wide constants and dropdown values, editable without a deploy</li>
+              <li>Salesforce account to document-folder lookups</li>
+              <li>Automated record-based and scripted test tooling for regression checks</li>
+            </ul>
+          </div>
+
+          <div class="cs-detail">
+            <h3 class="cs-detail__title">Access model</h3>
+            <ul class="cs-detail__list">
+              <li>Google OAuth in production, restricted to company domain accounts</li>
+              <li>An admin-access guard fronts every admin route</li>
+              <li>On localhost the app seeds a mock user and skips auth entirely, so local development needs no live credentials</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURE SPOTLIGHT ===== -->
+    <section class="cs-section">
+      <div class="container cs-prose">
+        <h2 class="cs-section__title">Spotlight: Project Visibility</h2>
+        <p>
+          The feature I spent most of my time on answers a question leadership was
+          asking constantly and couldn't answer quickly: <em>across the whole
+          portfolio, which projects are healthy and which are burning budget faster
+          than they're delivering?</em> The data existed&mdash;it was scattered
+          across status reports, the PSA system, and people's heads.
+        </p>
+        <p>
+          Project Visibility is a portfolio-wide panel that puts status and budget
+          performance for every active project in one grid. I wired the detail pane
+          to real status-report data rather than the placeholder it started
+          on, then added editable free-text notes with last-edited-by attribution,
+          so a delivery lead can leave context on a project and everyone can see who
+          said it and when. I also added import and delete actions to the panel so
+          the portfolio could be curated without a round trip to an admin.
+        </p>
+        <p>
+          The work that took longest was the least visible. Change detection had to
+          run inside Angular's zone for state updates arriving from outside it, or
+          edits would land in the model and never reach the screen. And the shared
+          date formatter silently mangled ISO datetime strings&mdash;fine for a
+          plain <code>yyyy-MM-dd</code>, wrong the moment a timestamp carried a time
+          component&mdash;which meant every "last updated" in the panel displayed
+          incorrectly until it was fixed at the utility level.
+        </p>
+
+        <div class="cs-callouts">
+          <div class="cs-callout">
+            <span class="cs-callout__label">Shipped</span>
+            <span class="cs-callout__value">Portfolio panel wired to live status-report data</span>
+          </div>
+          <div class="cs-callout">
+            <span class="cs-callout__label">Shipped</span>
+            <span class="cs-callout__value">Editable notes with last-editor attribution</span>
+          </div>
+          <div class="cs-callout">
+            <span class="cs-callout__label">Shipped</span>
+            <span class="cs-callout__value">Import and delete actions for portfolio curation</span>
+          </div>
+          <div class="cs-callout">
+            <span class="cs-callout__label">Fixed</span>
+            <span class="cs-callout__value">Zone-aware change detection and a shared date-formatting bug on ISO datetimes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ENGINEERING CONVENTIONS ===== -->
+    <section class="cs-section cs-section--alt">
+      <div class="container">
+        <h2 class="cs-section__title">Engineering Conventions</h2>
+        <p class="cs-prose">
+          An internal app that grows for years gets inconsistent unless the rules are
+          explicit. These are enforced in review, and following them is most of what
+          made a three-month ramp-up productive.
+        </p>
+
+        <div class="cs-table-wrap">
+          <table class="cs-table">
+            <thead>
+              <tr><th>#</th><th>Convention</th><th>Why it exists</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>One shared data-table component</td>
+                <td>Every real data grid goes through <code>&lt;app-data-table&gt;</code>. Sortable, resizable, reorderable columns, Excel export, row counts, and cookie-persisted layout come free everywhere. Raw <code>&lt;table&gt;</code> markup for data is disallowed.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Typeahead over long dropdowns</td>
+                <td>Any dropdown past roughly ten options becomes a typeahead with case-insensitive substring matching, backed by a preloaded and cached service&mdash;never a per-keystroke API call.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Dates always render <code>yyyy/MM/dd</code></td>
+                <td>Formatted manually rather than through locale-dependent <code>Intl</code> or <code>toLocaleDateString</code>, so the same record reads identically for every user regardless of browser locale.</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Modern Angular throughout</td>
+                <td>Standalone components, signals for state, and the <code>&#64;if</code> / <code>&#64;for</code> control flow. No NgModules and no legacy structural directives in new code.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Feature branch, PR, squash merge</td>
+                <td>No direct pushes to <code>main</code>. A merged PR builds and pushes a Docker image to the container registry, so what ships is always what was reviewed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="cs-section">
+      <div class="container">
+        <h2 class="cs-section__title">Tech Stack</h2>
+        <ul class="skills__list cs-stack">
+          <li class="skill-badge">Angular 21</li>
+          <li class="skill-badge">TypeScript</li>
+          <li class="skill-badge">Angular Signals</li>
+          <li class="skill-badge">RxJS</li>
+          <li class="skill-badge">Angular CDK</li>
+          <li class="skill-badge">ng-select</li>
+          <li class="skill-badge">Vitest</li>
+          <li class="skill-badge">Spring Boot API</li>
+          <li class="skill-badge">Salesforce</li>
+          <li class="skill-badge">Camunda BPM</li>
+          <li class="skill-badge">Docker</li>
+          <li class="skill-badge">nginx</li>
+        </ul>
+        <div class="cs-hero__ctas cs-section__ctas">
+          <a href="index.html#projects" class="btn btn--primary">Other projects</a>
+          <a href="index.html#contact" class="btn btn--outline">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Will Knudson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

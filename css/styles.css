@@ -533,6 +533,14 @@ ul {
   transform: translateX(2px);
 }
 
+/* Non-link note in a card's action row (e.g. "Private repository") */
+.card__note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  align-self: center;
+}
+
 /* ============================================================
    SKILLS
    ============================================================ */
@@ -573,6 +581,11 @@ ul {
 /* ============================================================
    EDUCATION
    ============================================================ */
+.education__cards {
+  display: grid;
+  gap: 20px;
+}
+
 .education__card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -608,6 +621,15 @@ ul {
   color: var(--text-muted);
   font-size: 0.95rem;
   margin-bottom: 6px;
+}
+
+/* ============================================================
+   CERTIFICATIONS
+   ============================================================ */
+.certs__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 /* ============================================================

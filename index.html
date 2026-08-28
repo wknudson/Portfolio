@@ -118,6 +118,62 @@
         <div class="projects__grid">
 
           <article class="card fade-in">
+            <div class="card__badge">Internship</div>
+            <h3 class="card__title">Internal Business Operations Platform</h3>
+            <p class="card__desc">
+              Angular 21 single-page app used by Capital BPM staff to run sales
+              pipeline, statements of work, project delivery, time tracking, and
+              reporting &mdash; 55 components over a Spring Boot API with
+              Salesforce-backed data.
+            </p>
+            <div class="card__tags">
+              <span class="tag">Angular 21</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Spring Boot API</span>
+              <span class="tag">Salesforce</span>
+            </div>
+            <div class="card__links">
+              <a href="capbpm-sales.html" class="card__link card__link--primary">
+                Case Study
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="card__note">Private repository</span>
+            </div>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card__image-wrap card__gallery-trigger" data-gallery="hopeslens">
+              <img src="HopesLens/HopesLensHome.png" alt="Hope's Lens photography site homepage" class="card__image" loading="lazy">
+              <span class="card__image-count">4 screenshots</span>
+            </div>
+            <div class="card__badge">Client Site</div>
+            <h3 class="card__title">Hope's Lens Photography</h3>
+            <p class="card__desc">
+              Astro site for a San Francisco photographer, built with a second
+              developer. I authored the initial build &mdash; pages, components,
+              and the gallery content schema &mdash; then added responsive hero
+              art direction that swaps in vertical photos on mobile. Deployed on
+              Cloudflare Workers.
+            </p>
+            <div class="card__tags">
+              <span class="tag">Astro</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Cloudflare Workers</span>
+              <span class="tag">Responsive Design</span>
+            </div>
+            <div class="card__links">
+              <a href="https://github.com/kstephensen/HopesLens" class="card__link" target="_blank" rel="noopener">Source Code</a>
+              <button class="card__link card__gallery-btn card__gallery-trigger" data-gallery="hopeslens" type="button">Screenshots</button>
+            </div>
+            <div class="pswp-gallery" id="gallery-hopeslens" hidden>
+              <a href="HopesLens/HopesLensHome.png" data-pswp-width="600" data-pswp-height="1704" target="_blank"><img src="HopesLens/HopesLensHome.png" alt="Hope's Lens homepage with hero and masonry collage"></a>
+              <a href="HopesLens/HopesLensPricing.png" data-pswp-width="996" data-pswp-height="1572" target="_blank"><img src="HopesLens/HopesLensPricing.png" alt="Hope's Lens pricing page"></a>
+              <a href="HopesLens/HopesLensAbout.png" data-pswp-width="1344" data-pswp-height="972" target="_blank"><img src="HopesLens/HopesLensAbout.png" alt="Hope's Lens about page"></a>
+              <a href="HopesLens/HopesLensFAQ.png" data-pswp-width="1400" data-pswp-height="789" target="_blank"><img src="HopesLens/HopesLensFAQ.png" alt="Hope's Lens FAQ page with accordion"></a>
+            </div>
+          </article>
+
+          <article class="card fade-in">
             <div class="card__image-wrap card__gallery-trigger" data-gallery="havyn">
               <img src="Havyn/HavynDashboard.png" alt="Havyn dashboard screenshot" class="card__image" loading="lazy">
               <span class="card__image-count">5 screenshots</span>
@@ -305,15 +361,47 @@
     <section class="section education" id="education">
       <div class="container">
         <h2 class="section__title fade-in">Education</h2>
-        <div class="education__card fade-in">
-          <h3 class="education__school">Brigham Young University &mdash; Marriott School of Business</h3>
-          <p class="education__degree">B.S. in Information Systems, Minor in Computer Science</p>
-          <p class="education__meta">Provo, UT &bull; Expected Apr 2027</p>
-          <ul class="education__highlights">
-            <li>GPA: 3.93 / 4.00</li>
-            <li>Dean's List: Fall 2024, Winter 2025</li>
-            <li>1st Place, TES Innovation Contest &mdash; BYU College of Engineering</li>
-          </ul>
+        <div class="education__cards fade-in">
+
+          <div class="education__card">
+            <h3 class="education__school">Brigham Young University &mdash; Marriott School of Business</h3>
+            <p class="education__degree">M.S. in Information Systems</p>
+            <p class="education__meta">Provo, UT &bull; Starting Fall 2026 &bull; Expected 2028</p>
+          </div>
+
+          <div class="education__card">
+            <h3 class="education__school">Brigham Young University &mdash; Marriott School of Business</h3>
+            <p class="education__degree">B.S. in Information Systems, Minor in Computer Science</p>
+            <p class="education__meta">Provo, UT &bull; Expected Apr 2027</p>
+            <ul class="education__highlights">
+              <li>GPA: 3.93 / 4.00</li>
+              <li>Dean's List: Fall 2024, Winter 2025, Winter 2026</li>
+              <li>1st Place, TES Innovation Contest &mdash; BYU College of Engineering</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section class="section certifications" id="certifications">
+      <div class="container">
+        <h2 class="section__title fade-in">Certifications</h2>
+        <div class="certs__grid fade-in">
+
+          <div class="education__card">
+            <h3 class="education__school">Claude Certified Architect &mdash; Foundation (CCA-F)</h3>
+            <p class="education__degree">Anthropic</p>
+            <p class="education__meta">Issued 2026</p>
+          </div>
+
+          <div class="education__card">
+            <h3 class="education__school">Professional Scrum Master I (PSM I)</h3>
+            <p class="education__degree">Scrum.org</p>
+            <p class="education__meta">Agile delivery and Scrum practice</p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -327,11 +415,12 @@
           <div class="timeline__item">
             <div class="timeline__dot"></div>
             <div class="timeline__content">
-              <h3 class="timeline__role">Customer Service Representative</h3>
-              <p class="timeline__company">BYU Continuing Education Registration Center, Provo UT &mdash; <time>Sep 2021 &ndash; Apr 2022, Sep 2024 &ndash; Present</time></p>
+              <h3 class="timeline__role">BPM Consulting Intern</h3>
+              <p class="timeline__company">Capital BPM, Greenville SC &mdash; <time>Jun 2026 &ndash; Aug 2026</time></p>
               <ul class="timeline__details">
-                <li>Resolved 350+ daily inquiries using ticketing software and technical troubleshooting tools, boosting satisfaction scores and reducing wait times.</li>
-                <li>Automated reporting workflows using Excel formulas, pivot tables, and VBA, reducing manual processing time and improving data accuracy.</li>
+                <li>Developed an internal sales application supporting pre-sales workflows, improving project scoping efficiency by 25%.</li>
+                <li>Collaborated with clients during sales engineering to configure and implement Camunda-based BPM solutions.</li>
+                <li>Contributed to AI-powered document intelligence architecture, integrating Claude-based tooling into automation pipelines.</li>
               </ul>
             </div>
           </div>
@@ -339,11 +428,23 @@
           <div class="timeline__item">
             <div class="timeline__dot"></div>
             <div class="timeline__content">
-              <h3 class="timeline__role">Delivery Driver</h3>
-              <p class="timeline__company">Amazon, Gainesville VA &mdash; <time>May 2024 &ndash; Aug 2024</time></p>
+              <h3 class="timeline__role">Full-Stack Developer (Volunteer)</h3>
+              <p class="timeline__company">Dulles South Neighborhood Closet, Dulles VA &mdash; <time>Apr 2026 &ndash; Present</time></p>
               <ul class="timeline__details">
-                <li>Delivered 120+ packages daily across assigned region with 99% satisfaction and zero delivery errors.</li>
-                <li>Trained and coached new drivers on routing apps and best practices, accelerating team performance.</li>
+                <li>Built a custom web application for nonprofit leadership to streamline fundraising and community outreach.</li>
+                <li>Architected a zero-cost relational database using Google Sheets and Apps Script with custom API endpoints.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <h3 class="timeline__role">Customer Service Representative</h3>
+              <p class="timeline__company">BYU Continuing Education Registration Center, Provo UT &mdash; <time>Sep 2021 &ndash; Apr 2022, Sep 2024 &ndash; Present</time></p>
+              <ul class="timeline__details">
+                <li>Resolved 350+ daily inquiries using ticketing software and technical troubleshooting tools, boosting satisfaction scores and reducing wait times.</li>
+                <li>Automated reporting workflows using Excel formulas, pivot tables, and VBA, reducing manual processing time and improving data accuracy.</li>
               </ul>
             </div>
           </div>
